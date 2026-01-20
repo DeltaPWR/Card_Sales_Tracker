@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import DisclaimerModal from "../components/DisclaimerModal";
-import SearchBar from "../components/SearchBar";
-import ResultsList from "../components/ResultsList";
-import SidebarAds from "../components/SidebarAds";
+import DisclaimerModal from "../components/DisclaimerModal.jsx";
+import SearchBar from "../components/SearchBar.jsx";
+import ResultsList from "../components/ResultsList.jsx";
+import SidebarAds from "../components/SidebarAds.jsx";
 
 export default function Home() {
   const [showDisclaimer, setShowDisclaimer] = useState(false);
