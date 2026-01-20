@@ -1,0 +1,30 @@
+{
+  "name": "card-sales-tracker",
+  "version": "1.0.0",
+  "description": "Tracks sold trading card data using eBay",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeltaPWR/Card_Sales_Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeltaPWR/Card_Sales_Tracker/issues"
+  },
+  "homepage": "https://github.com/DeltaPWR/Card_Sales_Tracker#readme",
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
