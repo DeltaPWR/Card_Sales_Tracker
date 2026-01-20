@@ -1,54 +1,16 @@
-import { useEffect, useState } from "react";
-import DisclaimerModal from "../components/DisclaimerModal.jsx";
-import SearchBar from "../components/SearchBar.jsx";
-import ResultsList from "../components/ResultsList.jsx";
-import SidebarAds from "../components/SidebarAds.jsx";
+import { useState } from "react";
+import DisclaimerModal from "../components/DisclaimerModal";
 
 export default function Home() {
-  const [showDisclaimer, setShowDisclaimer] = useState(false);
-  const [results, setResults] = useState([]);
-  const [live, setLive] = useState(false);
-
-  useEffect(() => {
-    if (!localStorage.getItem("acceptedDisclaimer")) {
-      setShowDisclaimer(true);
-    }
-  }, []);
-
-  async function handleSearch(query, apiKey) {
-    const res = await fetch("/api/search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, apiKey })
-    });
-    const data = await res.json();
-    setResults(data.results);
-    setLive(data.live);
-  }
+  const [accepted, setAccepted] = useState(false);
 
   return (
     <>
-      {showDisclaimer && (
-        <DisclaimerModal
-          onAccept={() => {
-            localStorage.setItem("acceptedDisclaimer", "true");
-            setShowDisclaimer(false);
-          }}
-        />
-      )}
-
-      <div className="container">
-        <SearchBar onSearch={handleSearch} />
-
-        <div className="badge">
-          {live ? "🔵 Live eBay Sales" : "🟡 Simulated Prediction Data"}
-        </div>
-
-        <div className="layout">
-          <ResultsList results={results} />
-          <SidebarAds />
-        </div>
-      </div>
+      {!accepted && <DisclaimerModal onAccept={() => setAccepted(true)} />}
+      <main style={{ padding: "20px" }}>
+        <h1>Trading Card Sales Tracker</h1>
+        <p>If no API key is provided, results are simulated.</p>
+      </main>
     </>
   );
 }
